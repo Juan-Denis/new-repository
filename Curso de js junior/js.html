@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="Style.css">
+      <link rel="shortcut icon" href="favicon.ico.png" type="image/x-icon">
+      <title>Curso de JavaScript - Desde Básico a Intermedio</title>
+    </head>
+    <body>
+        <header class="main-header">
+            <div class="header-container">
+                <div class="header-top">
+                    <h1 class="titulo-principal" id="Titulo">📚 CURSO DE JAVASCRIPT</h1>
+                    <p class="subtitulo">Desde Básico hasta Nivel Intermedio</p>
+                </div>
+                <a href="zonajs.html" class="btn-zona-pruebas">
+                    <img class="imgjs" src="img js.png" alt="Zona de pruebas" onerror="this.style.display='none'">
+                    <span>Zona de Pruebas Interactiva</span>
+                </a>
+            </div>
+        </header>
+
+        <nav class="tabla-contenidos">
+            <h2>📖 Tabla de Contenidos</h2>
+            <div class="contenido-grid">
+                <div class="contenido-col-1">
+                    <h3>Fundamentos</h3>
+                    <ul>
+                        <li><a href="#las-variables">Las Variables</a></li>
+                        <li><a href="#concatenacion">Concatenación</a></li>
+                        <li><a href="#operadores">Operadores Matemáticos y Lógicos</a></li>
+                    </ul>
+                </div>
+                <div class="contenido-col-2">
+                    <h3>Estructuras de Datos</h3>
+                    <ul>
+                        <li><a href="#arrays">Arrays y Objetos</a></li>
+                        <li><a href="#bucles">Bucles e Iteración</a></li>
+                        <li><a href="#condicionales">Condicionales</a></li>
+                    </ul>
+                </div>
+                <div class="contenido-col-3">
+                    <h3>Funciones y Objetos</h3>
+                    <ul>
+                        <li><a href="#funciones">Funciones</a></li>
+                        <li><a href="#poo">Programación Orientada a Objetos</a></li>
+                    </ul>
+                </div>
+                <div class="contenido-col-4">
+                    <h3>Métodos y DOM</h3>
+                    <ul>
+                        <li><a href="#metodos-cadena">Métodos de Cadena</a></li>
+                        <li><a href="#metodos-arrays">Métodos de Arrays</a></li>
+                        <li><a href="#objeto-math">Objeto Math</a></li>
+                        <li><a href="#consola">Métodos de Consola</a></li>
+                        <li><a href="#dom">El DOM</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="contenido-principal">
+        <section class="seccion" id="las-variables">
+            <h1>🔤 Las Variables</h1>
+            <div class="intro-texto">
+                <p>Las variables son contenedores que almacenan valores. En JavaScript existen 3 tipos principales de variables, cada una con un propósito y alcance (scope) diferente.</p>
+            </div>
+            
+            <div class="variables-grid">
+                <div class="variable-card">
+                    <h2><code>let</code></h2>
+                    <p class="definicion">Es una variable con alcance de bloque (block scope).</p>
+                    <div class="caracteristicas">
+                        <p><strong>✓ Alcance:</strong> Solo dentro del bloque donde se declara (if, for, while, etc.)</p>
+                        <p><strong>✓ Reasignación:</strong> SÍ se puede cambiar su valor</p>
+                        <p><strong>✓ Redeclaración:</strong> NO en el mismo bloque</p>
+                    </div>
+                    <div class="codigo-ejemplo">
+                        <p><code>let edad = 25;<br>edad = 26;</code></p>
+                    </div>
+                </div>
+
+                <div class="variable-card">
+                    <h2><code>var</code></h2>
+                    <p class="definicion">Es una variable con alcance de función (function scope).</p>
+                    <div class="caracteristicas">
+                        <p><strong>⚠ Alcance:</strong> Todo el programa/función, independientemente de bloques</p>
+                        <p><strong>✓ Reasignación:</strong> SÍ se puede cambiar su valor</p>
+                        <p><strong>✓ Redeclaración:</strong> SÍ se puede redeclarar</p>
+                    </div>
+                    <div class="codigo-ejemplo">
+                        <p><code>var nombre = "Juan";<br>var nombre = "Carlos";</code></p>
+                    </div>
+                </div>
+
+                <div class="variable-card">
+                    <h2><code>const</code></h2>
+                    <p class="definicion">Una constante, su valor NO cambia (inmutable).</p>
+                    <div class="caracteristicas">
+                        <p><strong>🔒 Alcance:</strong> Solo dentro del bloque donde se declara</p>
+                        <p><strong>✗ Reasignación:</strong> NO se puede cambiar su valor</p>
+                        <p><strong>✗ Redeclaración:</strong> NO se puede redeclarar</p>
+                    </div>
+                    <div class="codigo-ejemplo">
+                        <p><code>const PI = 3.14159;<br>PI = 3.14; // ❌ Error</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabla-comparativa">
+                <h3>📊 Tabla Comparativa</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>let</th>
+                            <th>var</th>
+                            <th>const</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Alcance</strong></td>
+                            <td>Bloque</td>
+                            <td>Función</td>
+                            <td>Bloque</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reasignable</strong></td>
+                            <td>✓ Sí</td>
+                            <td>✓ Sí</td>
+                            <td>✗ No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Redeclarable</strong></td>
+                            <td>✗ No</td>
+                            <td>✓ Sí</td>
+                            <td>✗ No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hoisting</strong></td>
+                            <td>TDZ*</td>
+                            <td>undefined</td>
+                            <td>TDZ*</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="nota">*TDZ = Temporal Dead Zone (zona muerta temporal)</p>
+            </div>
+
+            <div class="consejo">
+                <p><strong>💡 Recomendación:</strong> Usa <code>const</code> por defecto, <code>let</code> cuando necesites reasignar, y evita <code>var</code> en código moderno.</p>
+            </div>
+        </section>
+        <section class="seccion" id="concatenacion">
+            <h1>🔗 Concatenación de Cadenas</h1>
+            <div class="intro-texto">
+                <p>La concatenación es el proceso de unir dos o más cadenas de texto en una sola. Existen varias formas de hacerlo en JavaScript.</p>
+            </div>
+
+            <div class="formas-grid">
+                <div class="forma-card">
+                    <h2>1️⃣ Usando el Operador <code>+</code></h2>
+                    <p>Es la forma más básica y tradicional.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let nombre = "Juan";<br>let saludo = "Hola, " + nombre + "!";<br>console.log(saludo); // "Hola, Juan!"</code></p>
+                    </div>
+                </div>
+
+                <div class="forma-card">
+                    <h2>2️⃣ Usando el Método <code>concat()</code></h2>
+                    <p>Método específico para concatenar cadenas.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let saludo = "Hola".concat(", ", "Juan", "!");<br>console.log(saludo); // "Hola, Juan!"</code></p>
+                    </div>
+                </div>
+
+                <div class="forma-card">
+                    <h2>3️⃣ Usando Template Literals (Backticks)</h2>
+                    <p>La forma más moderna y flexible. Permite expresiones dentro de <code>${}</code>.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let nombre = "Juan";<br>let edad = 25;<br>let saludo = `Hola, ${nombre}. Tienes ${edad} años.`;<br>console.log(saludo); // "Hola, Juan. Tienes 25 años."</code></p>
+                    </div>
+                </div>
+
+                <div class="forma-card">
+                    <h2>4️⃣ Usando <code>append()</code> en Arrays</h2>
+                    <p>Convertir a string y unir elementos.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let partes = ["Hola", "Juan"];<br>let saludo = partes.join(" ");<br>console.log(saludo); // "Hola Juan"</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="consejo">
+                <p><strong>💡 Recomendación:</strong> Usa template literals (<code>`${}`</code>) para una mejor legibilidad, especialmente cuando tengas múltiples variables.</p>
+            </div>
+        </section>
+        <section class="seccion" id="operadores">
+            <h1>🔢 Operadores Matemáticos y Lógicos</h1>
+            
+            <h2>Operadores Matemáticos</h2>
+            <div class="operadores-grid">
+                <div class="operador-card">
+                    <p><code>+</code></p>
+                    <p>Suma</p>
+                </div>
+                <div class="operador-card">
+                    <p><code>-</code></p>
+                    <p>Resta</p>
+                </div>
+                <div class="operador-card">
+                    <p><code>*</code></p>
+                    <p>Multiplicación</p>
+                </div>
+                <div class="operador-card">
+                    <p><code>/</code></p>
+                    <p>División</p>
+                </div>
+                <div class="operador-card">
+                    <p><code>%</code></p>
+                    <p>Módulo (residuo)</p>
+                </div>
+                <div class="operador-card">
+                    <p><code>**</code></p>
+                    <p>Potencia</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Operadores Lógicos</h2>
+            <div class="logicos-container">
+                <div class="logico-card">
+                    <h3>AND (<code>&&</code>)</h3>
+                    <p><strong>Descripción:</strong> Retorna <code>true</code> si AMBAS condiciones son verdaderas.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>if (edad > 18 && tieneLicencia) {<br>&nbsp;&nbsp;console.log("Puedes conducir");<br>}</code></p>
+                    </div>
+                    <p><strong>Tabla de verdad:</strong></p>
+                    <table class="tabla-verdad">
+                        <tr><td>true && true</td><td>= true</td></tr>
+                        <tr><td>true && false</td><td>= false</td></tr>
+                        <tr><td>false && false</td><td>= false</td></tr>
+                    </table>
+                </div>
+
+                <div class="logico-card">
+                    <h3>OR (<code>||</code>)</h3>
+                    <p><strong>Descripción:</strong> Retorna <code>true</code> si AL MENOS UNA condición es verdadera.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>if (esAdmin || esOwner) {<br>&nbsp;&nbsp;console.log("Tienes acceso");<br>}</code></p>
+                    </div>
+                    <p><strong>Tabla de verdad:</strong></p>
+                    <table class="tabla-verdad">
+                        <tr><td>true || false</td><td>= true</td></tr>
+                        <tr><td>false || false</td><td>= false</td></tr>
+                        <tr><td>true || true</td><td>= true</td></tr>
+                    </table>
+                </div>
+
+                <div class="logico-card">
+                    <h3>NOT (<code>!</code>)</h3>
+                    <p><strong>Descripción:</strong> Invierte el valor booleano (true → false, false → true).</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let esActivo = true;<br>if (!esActivo) {<br>&nbsp;&nbsp;console.log("Usuario inactivo");<br>}</code></p>
+                    </div>
+                    <p><strong>Tabla de verdad:</strong></p>
+                    <table class="tabla-verdad">
+                        <tr><td>!true</td><td>= false</td></tr>
+                        <tr><td>!false</td><td>= true</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Operadores de Comparación</h2>
+            <div class="comparacion-grid">
+                <div class="comp-card">
+                    <p><code>==</code> Igual (valor)</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>===</code> Igual (valor y tipo)</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>!=</code> No igual</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>!==</code> No igual (estricto)</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>&gt;</code> Mayor que</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>&lt;</code> Menor que</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>&gt;=</code> Mayor o igual</p>
+                </div>
+                <div class="comp-card">
+                    <p><code>&lt;=</code> Menor o igual</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Condicionales (if, else, else if)</h2>
+            <div class="condicionales-container">
+                <div class="cond-card">
+                    <h3>IF</h3>
+                    <p>Ejecuta un bloque si la condición es verdadera.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>if (edad >= 18) {<br>&nbsp;&nbsp;console.log("Eres mayor de edad");<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="cond-card">
+                    <h3>ELSE</h3>
+                    <p>Ejecuta un bloque si la condición es falsa.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>if (edad >= 18) {<br>&nbsp;&nbsp;console.log("Mayor");<br>} else {<br>&nbsp;&nbsp;console.log("Menor");<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="cond-card">
+                    <h3>ELSE IF</h3>
+                    <p>Comprueba múltiples condiciones.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>if (nota >= 9) {<br>&nbsp;&nbsp;console.log("Excelente");<br>} else if (nota >= 7) {<br>&nbsp;&nbsp;console.log("Bueno");<br>} else {<br>&nbsp;&nbsp;console.log("Necesita mejorar");<br>}</code></p>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <section class="seccion" id="arrays">
+            <h1>📦 Arrays y Objetos</h1>
+            
+            <div class="intro-texto">
+                <p>Los arrays y objetos son estructuras de datos que permiten almacenar múltiples valores de forma organizada.</p>
+            </div>
+
+            <h2>Arrays (Listas)</h2>
+            <p>Un array es una colección ordenada de elementos. Se accede mediante índices (posiciones).</p>
+            <div class="codigo-ejemplo">
+                <p><code>let frutas = ["manzana", "plátano", "naranja"];<br>console.log(frutas[0]); // "manzana"<br>console.log(frutas.length); // 3</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Objetos (Diccionarios)</h2>
+            <p>Un objeto es una colección de pares clave-valor. Se accede mediante el nombre de la propiedad.</p>
+            <div class="objeto-ejemplo">
+                <div class="codigo-ejemplo">
+                    <p><code>let pc = {<br>&nbsp;&nbsp;nombre: "PCJuan",<br>&nbsp;&nbsp;procesador: "Intel Core i7",<br>&nbsp;&nbsp;ram: "32GB",<br>&nbsp;&nbsp;almacenamiento: "2TB"<br>};<br><br>console.log(pc.nombre); // "PCJuan"<br>console.log(pc["procesador"]); // "Intel Core i7"</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Diferencias Clave</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Array</th>
+                        <th>Objeto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Acceso</strong></td>
+                        <td>Por índice numérico (0, 1, 2...)</td>
+                        <td>Por nombre de propiedad</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Orden</strong></td>
+                        <td>Ordenado</td>
+                        <td>No siguiendo orden específico</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mejor para</strong></td>
+                        <td>Listas, colecciones</td>
+                        <td>Agrupar propiedades relacionadas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="seccion" id="bucles">
+            <h1>🔄 Bucles e Iteración</h1>
+            
+            <div class="intro-texto">
+                <p>Los bucles permiten ejecutar un bloque de código repetidas veces, de manera automática, lo que ahorra código y facilita el manejo de colecciones de datos.</p>
+            </div>
+
+            <div class="bucles-grid">
+                <div class="bucle-card">
+                    <h2>WHILE</h2>
+                    <p><strong>Uso:</strong> Se repite mientras la condición sea verdadera.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let i = 0;<br>while (i < 5) {<br>&nbsp;&nbsp;console.log(i);<br>&nbsp;&nbsp;i++;<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="bucle-card">
+                    <h2>DO WHILE</h2>
+                    <p><strong>Uso:</strong> Ejecuta primero, luego pregunta. Mínimo una ejecución.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let i = 0;<br>do {<br>&nbsp;&nbsp;console.log(i);<br>&nbsp;&nbsp;i++;<br>} while (i < 5);</code></p>
+                    </div>
+                </div>
+
+                <div class="bucle-card">
+                    <h2>FOR</h2>
+                    <p><strong>Uso:</strong> Bucle determinado con inicio, condición e incremento.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>for (let i = 0; i < 5; i++) {<br>&nbsp;&nbsp;console.log(i);<br>}</code></p>
+                    </div>
+                    <p class="nota"><strong>Partes:</strong> inicialización ; condición ; incremento</p>
+                </div>
+
+                <div class="bucle-card">
+                    <h2>FOR IN</h2>
+                    <p><strong>Uso:</strong> Recorre las propiedades de un objeto o índices de un array.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let obj = {a: 1, b: 2};<br>for (let key in obj) {<br>&nbsp;&nbsp;console.log(key); // "a", "b"<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="bucle-card">
+                    <h2>FOR OF</h2>
+                    <p><strong>Uso:</strong> Recorre los valores de un array o iterable.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let frutas = ["manzana", "plátano"];<br>for (let fruta of frutas) {<br>&nbsp;&nbsp;console.log(fruta);<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="bucle-card">
+                    <h2>FOREACH</h2>
+                    <p><strong>Uso:</strong> Método que ejecuta una función en cada elemento.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>frutas.forEach((fruta, index) => {<br>&nbsp;&nbsp;console.log(index, fruta);<br>});</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Sentencias de Control en Bucles</h2>
+            <div class="control-grid">
+                <div class="control-card">
+                    <h3>BREAK</h3>
+                    <p>Detiene completamente el bucle.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>for (let i = 0; i < 10; i++) {<br>&nbsp;&nbsp;if (i === 5) break;<br>&nbsp;&nbsp;console.log(i);<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="control-card">
+                    <h3>CONTINUE</h3>
+                    <p>Salta la iteración actual.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>for (let i = 0; i < 10; i++) {<br>&nbsp;&nbsp;if (i === 5) continue;<br>&nbsp;&nbsp;console.log(i);<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="control-card">
+                    <h3>LABEL</h3>
+                    <p>Etiqueta un bucle para control específico.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>miEtiqueta: for (...) {<br>&nbsp;&nbsp;break miEtiqueta;<br>}</code></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="seccion" id="funciones">
+            <h1>🔧 Funciones</h1>
+            
+            <div class="intro-texto">
+                <p>Las funciones son bloques de código reutilizables que realizan tareas específicas. Permiten organizar el código, evitar repeticiones y hacerlo más mantenible.</p>
+            </div>
+
+            <h2>Declaración de Función</h2>
+            <div class="codigo-ejemplo">
+                <p><code>function saludar() {<br>&nbsp;&nbsp;console.log("¡Hola!");<br>}<br><br>saludar(); // Llamar la función</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Funciones con Parámetros</h2>
+            <p>Los parámetros permiten que las funciones reciban datos y se comporten de manera dinámica.</p>
+            <div class="codigo-ejemplo">
+                <p><code>function saludar(nombre) {<br>&nbsp;&nbsp;console.log(`¡Hola, ${nombre}!`);<br>}<br><br>saludar("Juan"); // ¡Hola, Juan!</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">RETURN - Devolver Valores</h2>
+            <p>El <code>return</code> devuelve un valor que puede usarse en otra parte del código.</p>
+            <div class="codigo-ejemplo">
+                <p><code>function sumar(a, b) {<br>&nbsp;&nbsp;return a + b;<br>}<br><br>let resultado = sumar(5, 3);<br>console.log(resultado); // 8</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Funciones Flecha (Arrow Functions)</h2>
+            <p>Forma más concisa e moderna de declarar funciones.</p>
+            <div class="codigo-ejemplo">
+                <p><code>// Forma larga<br>const sumar = (a, b) => {<br>&nbsp;&nbsp;return a + b;<br>};<br><br>// Forma corta<br>const sumar = (a, b) => a + b;</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Función Anónima</h2>
+            <p>Función sin nombre, típicamente asignada a una variable.</p>
+            <div class="codigo-ejemplo">
+                <p><code>const multiplicar = function(a, b) {<br>&nbsp;&nbsp;return a * b;<br>};</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Parámetros Predeterminados</h2>
+            <div class="codigo-ejemplo">
+                <p><code>function saludar(nombre = "Amigo") {<br>&nbsp;&nbsp;console.log(`¡Hola, ${nombre}!`);<br>}<br><br>saludar(); // ¡Hola, Amigo!</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Comparación de Sintaxis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Sintaxis</th>
+                        <th>Ventajas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Función Normal</strong></td>
+                        <td><code>function name() {}</code></td>
+                        <td>Hoisting, legible, traditional</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Función Expresión</strong></td>
+                        <td><code>const name = function() {}</code></td>
+                        <td>Puede asignarse sin hoisting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Arrow Function</strong></td>
+                        <td><code>const name = () => {}</code></td>
+                        <td>Sintaxis corta, modern, mejor `this`</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="seccion" id="poo">
+            <h1>🏗️ Programación Orientada a Objetos (POO)</h1>
+            
+            <div class="intro-texto">
+                <p>La POO es un paradigma que organiza el código en objetos con propiedades (datos) y métodos (funciones). Facilita crear sistemas complejos y mantenibles.</p>
+            </div>
+
+            <h2>Conceptos Fundamentales</h2>
+            <div class="conceptos-grid">
+                <div class="concepto-card">
+                    <h3>📋 Clase</h3>
+                    <p>Es el plano o molde para crear objetos.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>class Persona {<br>&nbsp;&nbsp;constructor(nombre) {<br>&nbsp;&nbsp;&nbsp;&nbsp;this.nombre = nombre;<br>&nbsp;&nbsp;}<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>🔧 Constructor</h3>
+                    <p>Método especial que se ejecuta al crear un objeto.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>let maria = new Persona("María");</code></p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>📦 Propiedades</h3>
+                    <p>Los datos que caracterizan al objeto.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>this.nombre = "Juan";<br>this.edad = 25;</code></p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>⚙️ Métodos</h3>
+                    <p>Funciones que asocian comportamiento.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>saludar() {<br>&nbsp;&nbsp;return `Hola, soy ${this.nombre}`;<br>}</code></p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>🔐 Encapsulamiento</h3>
+                    <p>Control de acceso a propiedades.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>#saldo = 0; // privado</code></p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>👨‍👧 Herencia</h3>
+                    <p>Una clase hereda de otra.</p>
+                    <div class="codigo-ejemplo">
+                        <p><code>class Estudiante extends Persona {}</code></p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>🎭 Polimorfismo</h3>
+                    <p>El mismo método se comporta diferente.</p>
+                    <div class="codigo-ejemplo">
+                        <p>Métodos con mismo nombre, distinto comportamiento.</p>
+                    </div>
+                </div>
+
+                <div class="concepto-card">
+                    <h3>🔨 Abstracción</h3>
+                    <p>Simplificar conceptos complejos.</p>
+                    <div class="codigo-ejemplo">
+                        <p>Ocultar detalles innecesarios del usuario.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Getters y Setters</h2>
+            <p>Métodos especiales para acceder y modificar propiedades.</p>
+            <div class="codigo-ejemplo">
+                <p><code>get nombre() { return this._nombre; }<br>set nombre(valor) { this._nombre = valor; }</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Métodos Estáticos</h2>
+            <p>Pertenecen a la clase, no a instancias.</p>
+            <div class="codigo-ejemplo">
+                <p><code>static sumar(a, b) { return a + b; }</code></p>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Super - Herencia</h2>
+            <p>Accede a métodos de la clase padre.</p>
+            <div class="codigo-ejemplo">
+                <p><code>super.metodo(); // Llamar método del padre</code></p>
+            </div>
+        </section>
+               para llamar la clases se pone let variable= new class (se defien los parametros);
+            </p>
+            
+            <h2>CONSTRUCTOR</h2>da
+            <P>En el constructor se crea o se defien las caracteristicas de nuestro abjeto this.caracteriestica 
+               <br> contructor(parametros){<br>
+                    this.name=parametro que se le va pasar
+                }
+            </P>
+              
+            <h2>Abstracion</h2>
+            <p>lo que se bueca es definir las cosas lo mas simplificado posible objetos etc</p>
+            <h2>modularidad</h2>
+            <p> la modularidad nos indica que debemos dividir los problemas en partes y solucionearlo parte por parte para poder hacer las cosas poco a poco</p>
+            <h2>Encapsulamiento</h2>
+            <p> nos permite Encapsulamiento los datos y no permiter el aceso tan facil de estos</p>
+            <h2>polimorfismo</h2>
+            <p> es la capacidad que tiene un abjeto de comportarse distinto a un metoodo por sus propiedades </p>
+            <h2>HERENCIA</h2>
+            <p> la Herencia es tomar todo o lo de otra cosas de una clase y agregrar mas cosas hereda todo lo demasbr
+                para esto se pone Class new neme extends nombre de la clase que queremos heredar  </p>
+                <h3>super</h3>
+                <p>se usa super para poner o trear los atrubutos de la clases que se va a heredad se pone en el constructor de la siguiete forma 
+                : super(y en esta zona se pone los nomrbe de los atrubuso a heredar) y despues de esto se crea los nuevos atrubutos que esta nueva clase va a tener aparte de los que ya se estan heredadonde de la clases anterios 
+                </p>
+            <h2>METODO ESTATICOS STATIC</h2>
+            <H3>STATIC</H3>
+            <p>los metodo estaticos son permite crear metodo si necesidad de un constructor y nos permite hacer cosas sin esto y ya </p>
+            <h3>Los setter y  getter se usan y funcionan de la maano</h3>
+            <h2>  GETTER</h2>
+            <p>los <b>GETTER</b>son para obtener un valor  </p>
+            <p>se pone de esta forma set setnombre(newparametro){
+                                             this.name1=newparametro }
+                                    
+            </p>
+        </section>
+        
+        <section class="seccion" id="metodos-arrays">
+            <h1>📚 Métodos de Arrays</h1>
+            <div class="intro-texto">
+                <p>Los arrays tienen métodos muy útiles para manipular, transformar y buscar datos.</p>
+            </div>
+
+            <h2>Métodos Modificadores (Transformadores)</h2>
+            <p>Estos métodos cambian el array original:</p>
+            <div class="metodos-grid">
+                <div class="metodo-card">
+                    <h3><code>push()</code></h3>
+                    <p>Agrega elemento(s) al final.</p>
+                    <p><code>[1,2].push(3); // [1,2,3]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>pop()</code></h3>
+                    <p>Elimina el último elemento.</p>
+                    <p><code>[1,2,3].pop(); // [1,2]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>shift()</code></h3>
+                    <p>Elimina el primer elemento.</p>
+                    <p><code>[1,2,3].shift(); // [2,3]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>unshift()</code></h3>
+                    <p>Agrega elemento(s) al inicio.</p>
+                    <p><code>[2,3].unshift(1); // [1,2,3]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>reverse()</code></h3>
+                    <p>Invierte el orden.</p>
+                    <p><code>[1,2,3].reverse(); // [3,2,1]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>sort()</code></h3>
+                    <p>Ordena alfabéticamente.</p>
+                    <p><code>[3,1,2].sort(); // [1,2,3]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>splice()</code></h3>
+                    <p>Elimina y/o agrega elementos.</p>
+                    <p><code>[1,2,3,4].splice(1,2); // [1,4]</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Métodos de Acceso (No modifican)</h2>
+            <p>Estos métodos NO cambian el array original:</p>
+            <div class="metodos-grid">
+                <div class="metodo-card">
+                    <h3><code>slice()</code></h3>
+                    <p>Copia parte del array.</p>
+                    <p><code>[1,2,3,4].slice(1,3); // [2,3]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>concat()</code></h3>
+                    <p>Une dos arrays.</p>
+                    <p><code>[1,2].concat([3,4]); // [1,2,3,4]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>join()</code></h3>
+                    <p>Convierte a string con separador.</p>
+                    <p><code>[1,2,3].join("-"); // "1-2-3"</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>indexOf()</code></h3>
+                    <p>Busca el índice del elemento.</p>
+                    <p><code>[1,2,3].indexOf(2); // 1</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>includes()</code></h3>
+                    <p>Verifica si contiene elemento.</p>
+                    <p><code>[1,2,3].includes(2); // true</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Métodos de Iteración</h2>
+            <p>Ejecutan funciones en cada elemento:</p>
+            <div class="metodos-grid">
+                <div class="metodo-card">
+                    <h3><code>forEach()</code></h3>
+                    <p>Ejecuta función en cada elemento.</p>
+                    <p><code>[1,2,3].forEach(n => console.log(n));</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>map()</code></h3>
+                    <p>Crea array con resultados.</p>
+                    <p><code>[1,2,3].map(n => n*2); // [2,4,6]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>filter()</code></h3>
+                    <p>Filtra por condición.</p>
+                    <p><code>[1,2,3,4].filter(n => n>2); // [3,4]</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>find()</code></h3>
+                    <p>Encuentra el primer elemento.</p>
+                    <p><code>[1,2,3].find(n => n>2); // 3</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>reduce()</code></h3>
+                    <p>Reduce array a un valor.</p>
+                    <p><code>[1,2,3].reduce((a,b) => a+b); // 6</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>some()</code></h3>
+                    <p>¿Alguno cumple la condición?</p>
+                    <p><code>[1,2,3].some(n => n>2); // true</code></p>
+                </div>
+                <div class="metodo-card">
+                    <h3><code>every()</code></h3>
+                    <p>¿Todos cumplen la condición?</p>
+                    <p><code>[1,2,3].every(n => n>0); // true</code></p>
+                </div>
+            </div>
+        </section>
+            <h1>🔤 Métodos de Cadena</h1>
+            <p>Los métodos de cadena permiten manipular strings de diversas formas.</p>
+            
+            <div class="metodos-grid">
+                <div class="metodo-card">
+                    <h3><code>concat()</code></h3>
+                    <p>Une dos o más cadenas y retorna una nueva.</p>
+                    <p><code>"Hola".concat(" ", "Mundo"); // "Hola Mundo"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>startsWith()</code></h3>
+                    <p>Verifica si una cadena comienza con ciertos caracteres.</p>
+                    <p><code>"JavaScript".startsWith("Java"); // true</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>endsWith()</code></h3>
+                    <p>Verifica si una cadena termina con ciertos caracteres.</p>
+                    <p><code>"JavaScript".endsWith("Script"); // true</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>includes()</code></h3>
+                    <p>Verifica si una cadena contiene otra.</p>
+                    <p><code>"Hola Mundo".includes("Mundo"); // true</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>indexOf()</code></h3>
+                    <p>Retorna el índice de la primera ocurrencia.</p>
+                    <p><code>"Hola".indexOf("l"); // 2 (-1 si no existe)</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>lastIndexOf()</code></h3>
+                    <p>Retorna el índice de la última ocurrencia.</p>
+                    <p><code>"Hola".lastIndexOf("l"); // 3</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>slice()</code></h3>
+                    <p>Extrae una parte de una cadena.</p>
+                    <p><code>"Hola".slice(0, 3); // "Hol"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>substring()</code></h3>
+                    <p>Similar a slice() pero sin soportar índices negativos.</p>
+                    <p><code>"Hola".substring(0, 3); // "Hol"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>toLowerCase()</code></h3>
+                    <p>Convierte a minúsculas.</p>
+                    <p><code>"HOLA".toLowerCase(); // "hola"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>toUpperCase()</code></h3>
+                    <p>Convierte a mayúsculas.</p>
+                    <p><code>"hola".toUpperCase(); // "HOLA"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>trim()</code></h3>
+                    <p>Elimina espacios en blanco al inicio y fin.</p>
+                    <p><code>"  Hola  ".trim(); // "Hola"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>split()</code></h3>
+                    <p>Divide una cadena en un array.</p>
+                    <p><code>"a,b,c".split(","); // ["a", "b", "c"]</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>replace()</code></h3>
+                    <p>Reemplaza la primera ocurrencia.</p>
+                    <p><code>"Hola Hola".replace("Hola", "Hi"); // "Hi Hola"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>repeat()</code></h3>
+                    <p>Repite una cadena N veces.</p>
+                    <p><code>"abc".repeat(3); // "abcabcabc"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>padStart()</code></h3>
+                    <p>Rellena al principio hasta cierta longitud.</p>
+                    <p><code>"5".padStart(3, "0"); // "005"</code></p>
+                </div>
+
+                <div class="metodo-card">
+                    <h3><code>padEnd()</code></h3>
+                    <p>Rellena al final hasta cierta longitud.</p>
+                    <p><code>"5".padEnd(3, "0"); // "500"</code></p>
+                </div>
+            </div>
+        </section>
+            <hr>
+        <div>
+            <h1 id="METODOS DE ARRAYS">METODOS DE ARRAYS</h1>
+           <h3>Transformadores</h3>  
+           <p>pop() elimina el último elemento de un array y lo devuelve. shift() elimina el primer elemento de un array y lo devuelve.</p>
+           <p>push() agrega un elemento al array al final de la lista.</p>
+           <p>reverse() invierte el orden de los elementos de un array.</p>
+           <p>unshift() agrega uno o más elementos al inicio del array, y devuelve la nueva longitud del array.</p>
+           <p>sort() ordena los elementos de unarreglo (array) localmente y devuelve el arreglo ordenado.</p>
+           <p>splice() cambia el contenido de un array eliminando elementos existentes y/o agregando nuevos elementos</p>
+           <h3>Accesores</h3>
+             <p>join() une todos los elementos de una matriz (u objeto similar) en una cadena y la devuelve.</p>
+             <p>slice() devuelve una parte del array dentro de un nuevo array empezando por inicio hasta fin (fin noincluido).</p>
+             <p>Metodos ya vistos en cadenas: fostring(), indexOf(), lastIndexOf(), includes()
+                <h3>De Repetición</h3>
+             <p>filter()crea un nuevo array con todos los elementos que cumplan la con</p>
+             <p>forEach() ejecuta la función indicada una vez por cada elemento del arr</p>
+        
+        </section>
+
+        <section class="seccion" id="objeto-math">
+            <h1>🔢 Objeto Math</h1>
+            <p>El objeto Math proporciona funciones y constantes matemáticas.</p>
+            
+            <h2>Constantes</h2>
+            <div class="constantes-grid">
+                <div class="const-card">
+                    <p><code>Math.PI</code></p>
+                    <p>≈ 3.14159</p>
+                </div>
+                <div class="const-card">
+                    <p><code>Math.E</code></p>
+                    <p>≈ 2.71828</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Métodos Comunes</h2>
+            <div class="math-grid">
+                <div class="math-card">
+                    <h3><code>Math.abs()</code></h3>
+                    <p>Valor absoluto.</p>
+                    <p><code>Math.abs(-5); // 5</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.round()</code></h3>
+                    <p>Redondea al entero más cercano.</p>
+                    <p><code>Math.round(4.7); // 5</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.ceil()</code></h3>
+                    <p>Redondea hacia arriba.</p>
+                    <p><code>Math.ceil(4.2); // 5</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.floor()</code></h3>
+                    <p>Redondea hacia abajo.</p>
+                    <p><code>Math.floor(4.8); // 4</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.max()</code></h3>
+                    <p>Número mayor.</p>
+                    <p><code>Math.max(1,5,3); // 5</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.min()</code></h3>
+                    <p>Número menor.</p>
+                    <p><code>Math.min(1,5,3); // 1</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.pow()</code></h3>
+                    <p>Potencia (x elevado a y).</p>
+                    <p><code>Math.pow(2,3); // 8</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.sqrt()</code></h3>
+                    <p>Raíz cuadrada.</p>
+                    <p><code>Math.sqrt(16); // 4</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.random()</code></h3>
+                    <p>Número aleatorio entre 0 y 1.</p>
+                    <p><code>Math.random(); // 0.523</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.sin()</code></h3>
+                    <p>Seno (en radianes).</p>
+                    <p><code>Math.sin(Math.PI/2); // 1</code></p>
+                </div>
+                <div class="math-card">
+                    <h3><code>Math.cos()</code></h3>
+                    <p>Coseno (en radianes).</p>
+                    <p><code>Math.cos(0); // 1</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Ejemplo: Número Aleatorio Entero</h2>
+            <div class="codigo-ejemplo">
+                <p><code>// Entre 1 y 10<br>let aleatorio = Math.floor(Math.random() * 10) + 1;</code></p>
+            </div>
+        </section>
+
+        <section class="seccion" id="consola">
+            <h1>💻 Métodos de Consola</h1>
+            <p>La consola es una herramienta para debug y ver información en tiempo real.</p>
+            
+            <div class="consola-grid">
+                <div class="consola-card">
+                    <h3><code>console.log()</code></h3>
+                    <p>Imprime mensaje en la consola.</p>
+                    <p><code>console.log("Hola"); // Hola</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.warn()</code></h3>
+                    <p>Imprime advertencia (amarillo).</p>
+                    <p><code>console.warn("Cuidado!");</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.error()</code></h3>
+                    <p>Imprime error (rojo).</p>
+                    <p><code>console.error("Error!");</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.table()</code></h3>
+                    <p>Muestra datos en formato tabla.</p>
+                    <p><code>console.table([{id:1, nombre:"Juan"}]);</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.time()</code></h3>
+                    <p>Inicia un cronómetro.</p>
+                    <p><code>console.time("contador");</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.timeEnd()</code></h3>
+                    <p>Detiene y muestra tiempo.</p>
+                    <p><code>console.timeEnd("contador");</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.group()</code></h3>
+                    <p>Agrupa mensajes en la consola.</p>
+                    <p><code>console.group("Grupo");</code></p>
+                </div>
+
+                <div class="consola-card">
+                    <h3><code>console.clear()</code></h3>
+                    <p>Limpia la consola.</p>
+                    <p><code>console.clear();</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Ahora abre la consola del navegador</h2>
+            <p>Presiona <code>F12</code> o <code>Ctrl+Shift+J</code> (Windows) / <code>Cmd+Option+J</code> (Mac)</p>
+        </section>
+
+        <section class="seccion" id="dom">
+            <h1>🌐 El DOM (Document Object Model)</h1>
+            
+            <div class="intro-texto">
+                <p>El DOM es la representación en árbol de tu página HTML. Con JavaScript puedes acceder, modificar y manipular elementos del DOM.</p>
+            </div>
+
+            <h2>¿Qué es el DOM?</h2>
+            <p>El DOM convierte tu HTML en objetos que JavaScript puede manipular. Cada etiqueta HTML es un "nodo".</p>
+            <div class="codigo-ejemplo">
+                <pre><code>&lt;html&gt;
+  &lt;head&gt;...&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Título&lt;/h1&gt;
+    &lt;p&gt;Párrafo&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Seleccionar Elementos</h2>
+            <div class="dom-grid">
+                <div class="dom-card">
+                    <h3><code>getElementById()</code></h3>
+                    <p>Por ID único.</p>
+                    <p><code>document.getElementById("mi-id");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>querySelector()</code></h3>
+                    <p>Primer elemento que coincida.</p>
+                    <p><code>document.querySelector(".clase");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>querySelectorAll()</code></h3>
+                    <p>Todos los elementos que coincidan.</p>
+                    <p><code>document.querySelectorAll("p");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>getElementsByClassName()</code></h3>
+                    <p>Por nombre de clase.</p>
+                    <p><code>document.getElementsByClassName("mi-clase");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>getElementsByTagName()</code></h3>
+                    <p>Por nombre de etiqueta.</p>
+                    <p><code>document.getElementsByTagName("div");</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Modificar Contenido</h2>
+            <div class="dom-grid">
+                <div class="dom-card">
+                    <h3><code>textContent</code></h3>
+                    <p>Accede/modifica solo texto.</p>
+                    <p><code>elemento.textContent = "Nuevo texto";</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>innerHTML</code></h3>
+                    <p>HTML dentro del elemento.</p>
+                    <p><code>elemento.innerHTML = "&lt;b&gt;Negritas&lt;/b&gt;";</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>setAttribute()</code></h3>
+                    <p>Establece un atributo.</p>
+                    <p><code>elemento.setAttribute("src", "imagen.jpg");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>getAttribute()</code></h3>
+                    <p>Obtiene un atributo.</p>
+                    <p><code>elemento.getAttribute("class");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>style</code></h3>
+                    <p>Modifica estilos CSS.</p>
+                    <p><code>elemento.style.color = "rojo";</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Manipular Clases</h2>
+            <div class="dom-grid">
+                <div class="dom-card">
+                    <h3><code>classList.add()</code></h3>
+                    <p>Agrega una clase.</p>
+                    <p><code>elemento.classList.add("activo");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>classList.remove()</code></h3>
+                    <p>Elimina una clase.</p>
+                    <p><code>elemento.classList.remove("activo");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>classList.toggle()</code></h3>
+                    <p>Agrega/elimina una clase.</p>
+                    <p><code>elemento.classList.toggle("activo");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>classList.contains()</code></h3>
+                    <p>¿Tiene la clase?</p>
+                    <p><code>elemento.classList.contains("activo");</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Crear y Eliminar Elementos</h2>
+            <div class="dom-grid">
+                <div class="dom-card">
+                    <h3><code>createElement()</code></h3>
+                    <p>Crea un nuevo elemento.</p>
+                    <p><code>let div = document.createElement("div");</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>appendChild()</code></h3>
+                    <p>Agrega elemento como hijo.</p>
+                    <p><code>padre.appendChild(hijo);</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>removeChild()</code></h3>
+                    <p>Elimina un elemento hijo.</p>
+                    <p><code>padre.removeChild(hijo);</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>remove()</code></h3>
+                    <p>Elimina el elemento.</p>
+                    <p><code>elemento.remove();</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Navegar en el DOM</h2>
+            <div class="dom-grid">
+                <div class="dom-card">
+                    <h3><code>parentElement</code></h3>
+                    <p>Elemento padre.</p>
+                    <p><code>elemento.parentElement;</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>children</code></h3>
+                    <p>Hijos del elemento.</p>
+                    <p><code>elemento.children[0];</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>nextElementSibling</code></h3>
+                    <p>Hermano siguiente.</p>
+                    <p><code>elemento.nextElementSibling;</code></p>
+                </div>
+
+                <div class="dom-card">
+                    <h3><code>previousElementSibling</code></h3>
+                    <p>Hermano anterior.</p>
+                    <p><code>elemento.previousElementSibling;</code></p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Eventos</h2>
+            <p>Responden a acciones del usuario:</p>
+            <div class="codigo-ejemplo">
+                <p><code>// Click<br>elemento.addEventListener("click", function() {<br>&nbsp;&nbsp;console.log("¡Hacio click!");<br>});<br><br>// Más eventos: "input", "change", "submit", "mouseover", "keydown"</code></p>
+            </div>
+        </section>
+
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <h3>📚 Recursos Útiles</h3>
+                <ul>
+                    <li><a href="zonajs.html">Zona Interactiva de Pruebas</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/" target="_blank">Documentación MDN</a></li>
+                    <li><a href="https://www.w3schools.com/js/" target="_blank">W3Schools JavaScript</a></li>
+                </ul>
+                <p class="copyright">© 2025 Curso de JavaScript Básico - Sigue practicando 💪</p>
+            </div>
+        </footer>
+    </body>
+</html>

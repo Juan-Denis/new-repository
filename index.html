@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Centro de Control de Proyectos</title>
+  <link rel="stylesheet" type="text/css" href="dashboard.css">
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="icon" class="ico" href="myicon.ico.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/7d72fa0f2a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <i class="fas fa-code"></i>
+        <span>DevHub</span>
+      </div>
+      <button class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li><a href="#" class="nav-link active" data-section="dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="#" class="nav-link" data-section="tareas"><i class="fas fa-tasks"></i> Mis Tareas</a></li>
+        <li><a href="#" class="nav-link" data-section="proyectos"><i class="fas fa-folder"></i> Proyectos</a></li>
+        <li><a href="#" class="nav-link" data-section="estadisticas"><i class="fas fa-chart-pie"></i> Estadísticas</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>© 2026 Mi Centro de Desarrollo</p>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-container">
+
+    <!-- HEADER -->
+    <header class="top-header">
+      <div class="header-left">
+        <h1 id="section-title">Dashboard</h1>
+        <p id="section-subtitle">Control central de tu desarrollo</p>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <img src="my-2.png" alt="Perfil" class="user-avatar">
+          <span>Juan</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT SECTIONS -->
+    <div class="content">
+
+      <!-- DASHBOARD SECTION -->
+      <section id="dashboard-section" class="section active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon projects">
+              <i class="fas fa-folder-open"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="stat-proyectos">6</h3>
+              <p>Proyectos</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon tareas">
+              <i class="fas fa-check-square"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="stat-tareas">0</h3>
+              <p>Tareas Totales</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon completadas">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="stat-completadas">0</h3>
+              <p>Completadas</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon progreso">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="stat-porcentaje">20%</h3>
+              <p>Progreso</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK ACCESS -->
+        <div class="quick-access">
+          <h2>Acceso Rápido a Proyectos</h2>
+          <div class="projects-quick">
+            <a href="Curso de js junior/js.html" class="quick-item">
+              <i class="fas fa-graduation-cap"></i>
+              <span>Curso JavaScript Junior</span>
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+            <a href="lista de tareas/index.html" class="quick-item">
+              <i class="fas fa-list-check"></i>
+              <span>Gestor de Tareas</span>
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAREAS SECTION -->
+      <section id="tareas-section" class="section">
+        <div class="section-header">
+          <h2>Mi Lista de Tareas del Día</h2>
+          <p>Gestiona tus tareas pendientes y sigue tu progreso</p>
+        </div>
+
+        <div class="tareas-card">
+          <div class="input-section">
+            <input 
+              type="text" 
+              id="inputTarea" 
+              placeholder="Agregar nueva tarea..." 
+              autocomplete="off"
+            >
+            <button id="btnAgregar" class="btn-agregar">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+
+          <div class="filtros">
+            <button class="filtro-btn activo" data-filtro="todas">Todas</button>
+            <button class="filtro-btn" data-filtro="pendientes">Pendientes</button>
+            <button class="filtro-btn" data-filtro="completadas">Completadas</button>
+          </div>
+
+          <ul id="listaTareas" class="lista-tareas">
+            <!-- Las tareas se agregan aquí -->
+          </ul>
+
+          <div class="tareas-footer">
+            <div class="contador">
+              <span><strong id="contPendientes">0</strong> pendientes</span>
+              <span><strong id="contCompletadas">0</strong> completadas</span>
+            </div>
+            <button id="btnLimpiar" class="btn-limpiar">Limpiar Completadas</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROYECTOS SECTION -->
+      <section id="proyectos-section" class="section">
+        <div class="section-header">
+          <h2>Mis Proyectos en Desarrollo</h2>
+          <p>Mantén seguimiento de todos tus proyectos</p>
+        </div>
+       
+      <!-- curso de js-->
+        <div class="proyectos-grid">
+          <div class="proyecto-card">
+            <div class="proyecto-header">
+              <h3>Curso JavaScript Junior</h3>
+              <span class="status en-progreso">En Progreso</span>
+            </div>
+            <p class="proyecto-desc">Aprendiendo JavaScript desde cero</p>
+            <div class="proyecto-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%"></div>
+              </div>
+              <span class="progress-text">30%</span>
+            </div>
+            <div class="proyecto-footer">
+              <small>Última actualización: hace 2 días</small>
+              <a href="Curso de js junior/js.html" class="btn-link">Ver →</a>
+            </div>
+          </div>
+        
+      <!-- Gors y mas  -->
+           <div class="proyecto-card">
+            <div class="proyecto-header">
+              <h3>Gors y mas </h3>
+              <span class="status en-progreso">En Progreso</span>
+            </div>
+            <p class="proyecto-desc">Emprendimiento de gorras y otros proyectos en curso</p>
+            <div class="proyecto-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%"></div>
+              </div>
+              <span class="progress-text">10%</span>
+            </div>
+            <div class="proyecto-footer">
+              <small>Última actualización: hace 2 días</small>
+              <a href="Gorss ALL/shop.html" class="btn-link">Ver →</a>
+            </div>
+          </div>
+     
+        
+
+           <!-- My portafolia online -->
+           <div class="proyecto-card">
+            <div class="proyecto-header">
+              <h3>Portafolio Online</h3>
+              <span class="status en-progreso">En progreso</span>
+            </div>
+            <p class="proyecto-desc">Portafolio personal con proyectos y habilidades</p>
+            <div class="proyecto-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <span class="progress-text">80%</span>
+            </div>
+            <div class="proyecto-footer">
+              <small>Última actualización: hoy</small>
+              <a href="PORTAFOLIO-JUAN-PROGRAMER/index.html" class="btn-link">Ver →</a>
+            </div>
+          </div>
+         
+        <!-- Time Relaveite -->
+           <div class="proyecto-card">
+            <div class="proyecto-header">
+              <h3>Time Relaveite</h3>
+              <span class="status en-progreso">En progreso</span>
+            </div>
+            <p class="proyecto-desc">Aplicación de tiempo relaveite para controlar el tiempo de trabajo</p>
+            <div class="proyecto-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <span class="progress-text">40%</span>
+            </div>
+            <div class="proyecto-footer">
+              <small>Última actualización: hoy</small>
+              <a href="TimeRelative/index.html" class="btn-link">Ver →</a>
+            </div>
+          </div> 
+
+          <!-- Tienda online all shore -->
+          <div class="proyecto-card">
+            <div class="proyecto-header">
+              <h3>Tienda online</h3>
+              <span class="status en-pausa">En pausa</span>
+            </div>
+            <p class="proyecto-desc">Tienda online con productos de todos los tipos</p>
+            <div class="proyecto-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <span class="progress-text">10%</span>
+            </div>
+            <div class="proyecto-footer">
+              <a href="megaShop And Js study/index.html" class="btn-link">Ver →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTADISTICAS SECTION -->
+      <section id="estadisticas-section" class="section">
+        <div class="section-header">
+          <h2>Estadísticas de tu Desarrollo</h2>
+          <p>Analiza tu progreso y productividad</p>
+        </div>
+
+        <div class="stats-container">
+          <div class="stats-box">
+            <h3>Resumen de Tareas</h3>
+            <div class="chart-container">
+              <canvas id="tasksChart"></canvas>
+            </div>
+          </div>
+
+          <div class="stats-box">
+            <h3>Actividad Semanal</h3>
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="activity-day">Lunes</span>
+                <div class="activity-bar">
+                  <div class="activity-fill" style="width: 60%"></div>
+                </div>
+                <span class="activity-count">6 tareas</span>
+              </div>
+              <div class="activity-item">
+                <span class="activity-day">Martes</span>
+                <div class="activity-bar">
+                  <div class="activity-fill" style="width: 75%"></div>
+                </div>
+                <span class="activity-count">7 tareas</span>
+              </div>
+              <div class="activity-item">
+                <span class="activity-day">Miércoles</span>
+                <div class="activity-bar">
+                  <div class="activity-fill" style="width: 45%"></div>
+                </div>
+                <span class="activity-count">4 tareas</span>
+              </div>
+              <div class="activity-item">
+                <span class="activity-day">Jueves</span>
+                <div class="activity-bar">
+                  <div class="activity-fill" style="width: 80%"></div>
+                </div>
+                <span class="activity-count">8 tareas</span>
+              </div>
+              <div class="activity-item">
+                <span class="activity-day">Viernes</span>
+                <div class="activity-bar">
+                  <div class="activity-fill" style="width: 70%"></div>
+                </div>
+                <span class="activity-count">7 tareas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+ 
+  <script src="codigo.js"></script>
+</body>
+
+</html>

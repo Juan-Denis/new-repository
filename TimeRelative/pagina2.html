@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="stylesheet" type="text/css" href="diseño.css">
+     <meta charset="UTF-8">
+     <title>TimeRelative</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="calculadora">
+<header> 
+     <div class="logo__header">
+          TimeRelative
+     </div>
+        <nav class="nav">
+          <ul class="nav__ul">
+            <li class="nav__li"><i class=""></i><a href="index.html" class="texto">inico</a></li>
+            <li class="nav__li"><i class=""></i><a href=".html"class="texto">calendario</a></li>
+            <li class="nav__li"><i class=""></i><a href="pagina2.html"class="texto">calculadora</a></li>
+            <li class="nav__li"><i class=""></i><a href="index.html"class="texto">mas</a>
+            <ul class="menu-desplegable">
+               <li><a href="">ayuda</a></li>
+               <li><a href="">compañia</a></li>
+               <li><a href="">configuaraciones</a></li>
+            </ul>
+          </li>
+          </ul>
+        </nav>
+        
+</header>
+<div class="hlacal">
+<div id="cal">
+    <form name="calculator">
+        <input type="text" name="ans" value="" autocomplete="off" readonly>
+
+        <input type="button" value="7" onclick="document.calculator.ans.value+='7'">
+        <input type="button" value="8" onclick="document.calculator.ans.value+='8'">
+        <input type="button" value="9" onclick="document.calculator.ans.value+='9'">
+        <input type="button" value="+" onclick="document.calculator.ans.value+='+'">
+        <br>
+        <input type="button" value="4" onclick="document.calculator.ans.value+='4'">
+        <input type="button" value="5" onclick="document.calculator.ans.value+='5'">
+        <input type="button" value="6" onclick="document.calculator.ans.value+='6'">
+        <input type="button" value="-" onclick="document.calculator.ans.value+='-'">
+        <br>
+        <input type="button" value="1" onclick="document.calculator.ans.value+='1'">
+        <input type="button" value="2" onclick="document.calculator.ans.value+='2'">
+        <input type="button" value="3" onclick="document.calculator.ans.value+='3'">
+        <input type="button" value="x" onclick="document.calculator.ans.value+='* '">
+        <br>
+        <input type="button" value="0" onclick="document.calculator.ans.value+='0'">
+        <input type="reset" value="C">
+        <input type="button" value="=" onclick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+        <input type="button" value="/" onclick="document.calculator.ans.value+='/'">
+        
+    </form>
+
+</div>
+</div>
+<footer>
+     <div class="contenedor__footerp">
+          <div class="caja__footer">
+               <img="logo__2">logo</h1>
+               <h3</h3>
+          </div>
+          <div class="caja__footer">
+               <h2>servicios</h2>
+               <a href="index.html">inicio</a>
+               <a href="">calendario</a>
+               <a href="pagina2.html">calculadora</a>
+          </div>
+
+          <div class="caja__footer">
+               <h2>compañia</h2>
+                  <a href=""><i></i>Acerca de </a>
+                  <a href=""><i></i>pais</a> 
+                  <a href=""><i></i>ayuda</a>
+          </div>
+
+          <div class="caja__footer">
+               <h2>contactanos</h2>
+               <a href=""><i></i>instragram</a>
+               <a href=""><i></i>facebook</a>
+               <a href=""><i></i>gmail</a>
+          </div>
+     </div>
+
+   
+</footer>
+<script src="codigo.js"></script>
+</body>
+</html>

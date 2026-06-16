@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>TimeRelative - Horas del Mundo</title>
+     <link rel="stylesheet" type="text/css" href="style-new.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="inicio">
+
+<header class="header">
+     <div class="logo__header">
+          <span class="logo-icon">🌍</span> TimeRelative
+     </div>
+     <nav class="nav">
+          <ul class="nav__ul">
+               <li class="nav__li"><a href="index.html" class="texto">⏰ Horas</a></li>
+               <li class="nav__li"><a href="Caliendario.html" class="texto">📅 Calendario</a></li>
+               <li class="nav__li"><a href="clima.html" class="texto">🌤️ Clima</a></li>
+          </ul>
+     </nav>
+</header>
+
+<main class="main-content">
+     <!-- SECCIÓN PRINCIPAL DE HORAS -->
+     <section class="section-hero">
+          <div class="card-principal glass-effect">
+               <div class="time-display">
+                    <h1 id="time-principal" class="time-text">00:00:00</h1>
+                    <p id="date-principal" class="date-text">Cargando...</p>
+                    <p class="location-text">Tu Zona Horaria</p>
+               </div>
+          </div>
+     </section>
+
+     <!-- SECCIÓN DE ZONAS HORARIAS -->
+     <section class="section-timezones">
+          <h2 class="section-title">🌐 Horas del Mundo</h2>
+          <div class="timezones-grid">
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇨🇴</div>
+                    <p class="timezone-name">Colombia</p>
+                    <h3 id="time-colombia" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC -5</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇺🇸</div>
+                    <p class="timezone-name">Estados Unidos</p>
+                    <h3 id="time-usa" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC -5</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇧🇷</div>
+                    <p class="timezone-name">Brasil</p>
+                    <h3 id="time-brasil" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC -3</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇨🇦</div>
+                    <p class="timezone-name">Canadá</p>
+                    <h3 id="time-canada" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC -5</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇬🇧</div>
+                    <p class="timezone-name">Reino Unido</p>
+                    <h3 id="time-uk" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC 0</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇯🇵</div>
+                    <p class="timezone-name">Japón</p>
+                    <h3 id="time-japan" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC +9</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇦🇺</div>
+                    <p class="timezone-name">Australia</p>
+                    <h3 id="time-australia" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC +10</p>
+               </div>
+
+               <div class="timezone-card glass-effect">
+                    <div class="timezone-flag">🇮🇳</div>
+                    <p class="timezone-name">India</p>
+                    <h3 id="time-india" class="timezone-time">00:00</h3>
+                    <p class="timezone-offset">UTC +5:30</p>
+               </div>
+          </div>
+     </section>
+
+     <!-- SECCIÓN DE NOTAS -->
+     <section class="section-notes">
+          <h2 class="section-title">📝 Mis Notas</h2>
+          <div class="notes-container">
+               <div class="notes-input glass-effect">
+                    <input type="text" id="note-input" class="note-text-input" placeholder="Escribe una nota..." maxlength="100">
+                    <button id="btn-add-note" class="btn-add-note">Agregar</button>
+               </div>
+               <ul id="notes-list" class="notes-list">
+                    <!-- Las notas aparecen aquí -->
+               </ul>
+          </div>
+     </section>
+
+     <!-- SECCIÓN DE GALERÍA DE IMÁGENES -->
+     <section class="section-gallery">
+          <h2 class="section-title">🖼️ Galería de Guías</h2>
+          <div class="gallery-container">
+               <div class="gallery-upload glass-effect">
+                    <input type="file" id="image-input" class="image-input" accept="image/*" multiple>
+                    <label for="image-input" class="upload-label">
+                         <p class="upload-icon">📸</p>
+                         <p class="upload-text">Arrastra imágenes o haz click</p>
+                    </label>
+               </div>
+               <div id="gallery-grid" class="gallery-grid">
+                    <!-- Las imágenes aparecen aquí -->
+               </div>
+          </div>
+     </section>
+
+     <!-- SECCIÓN DE CALENDARIO MINI -->
+     <section class="section-calendar">
+          <h2 class="section-title">📅 Calendario Rápido</h2>
+          <div class="calendar-container glass-effect">
+               <div class="calendar-header">
+                    <button id="btn-prev-month" class="btn-month">◀</button>
+                    <h3 id="calendar-month" class="calendar-month">Enero 2025</h3>
+                    <button id="btn-next-month" class="btn-month">▶</button>
+               </div>
+               <div class="calendar-grid" id="calendar-grid">
+                    <!-- El calendario se genera aquí -->
+               </div>
+          </div>
+     </section>
+
+</main>
+
+<footer class="footer">
+     <div class="footer-content">
+          <div class="footer-section">
+               <h3>TimeRelative</h3>
+               <p>Tu compañero de horas globales</p>
+          </div>
+          <div class="footer-section">
+               <h4>Enlaces</h4>
+               <a href="index.html">Inicio</a>
+               <a href="Caliendario.html">Calendario</a>
+               <a href="clima.html">Clima</a>
+          </div>
+          <div class="footer-section">
+               <h4>Contacto</h4>
+               <a href="mailto:info@timerelative.com">Email</a>
+               <p class="copyright">© 2025 TimeRelative. Todos los derechos reservados.</p>
+          </div>
+     </div>
+</footer>
+
+<script src="codigo-new.js"></script>
+</body>
+</html>
+</html>
