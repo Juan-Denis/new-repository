@@ -537,3 +537,18 @@ table tbody tr:hover {
     background-color: var(--primary);
     color: var(--white);
 }
+
+
+
+#boton {
+   position: center;
+
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

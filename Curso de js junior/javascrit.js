@@ -613,3 +613,77 @@ resta(num1,num2)
 multiplicar(num1,num2)
 */
 
+function iniciarPrueba(){
+
+    alert("bienvenidos ingresen sus nombre");
+    let us1 = prompt("ingresa tu nombre ");
+    let us2 = prompt("ingresa tu nombre ");
+    let us3 = prompt("ingresa tu nombre ");
+
+    let edad1 = prompt(us1 + " ingresa tu edad");
+    let edad2 = prompt(us2 + " ingresa tu edad");
+    let edad3 = prompt(us3 + " ingresa tu edad");
+
+
+    alert("bienvenidos " + us1 + " " + us2 + " " + us3 + " sus edades son respectivamente: " + edad1 + " " + edad2 + " " + edad3+"esta seran verificadas para ver si pueden entrar al var");
+    
+      if (edad1 >= 18) {
+        alert(us1 + " puedes entrar al bar");
+      }
+      else {
+        alert(us1 + " no puedes entrar al bar");
+      }
+
+      if (edad2 >= 18) {
+        alert(us2 + " puedes entrar al bar");
+      }  
+      else {
+        alert(us2 + " no puedes entrar al bar");
+      }
+      
+      if (edad3 >= 18) {
+        alert(us3 + " puedes entrar al bar");
+      }    
+      else {
+        alert(us3 + " no puedes entrar al bar");
+      } 
+  }
+
+  alert("Bienvenidos necesitamos verificar un par de datos antes de ingresar a la zona de bebidas");
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const boton = document.getElementById("boton");
+  if (boton) {
+    boton.addEventListener("click", iniciarPrueba);
+  }
+
+  const nombreInput = document.getElementById("nombre");
+  if (nombreInput) {
+    nombreInput.addEventListener("input", (event) => {
+      console.log("Nombre ingresado:", event.target.value);
+    });
+  }
+
+  const edadInput = document.getElementById("edad");
+  if (edadInput) {
+    edadInput.addEventListener("input", (event) => {
+      console.log("Edad ingresada:", event.target.value);
+    });
+  }
+
+  const correoInput = document.getElementById("correo");
+  if (correoInput) {
+    correoInput.addEventListener("input", (event) => {
+      console.log("Correo ingresado:", event.target.value);
+    });
+  }
+
+  const telefonoInput = document.getElementById("telefono");
+  if (telefonoInput) {
+    telefonoInput.addEventListener("input", (event) => {
+      console.log("Teléfono ingresado:", event.target.value);
+    });
+  }
+
+});

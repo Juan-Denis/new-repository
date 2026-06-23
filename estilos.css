@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #f5f7fa;
+  background: #021128;
   color: #333;
   display: flex;
 }
@@ -115,7 +115,7 @@ body {
   margin-left: 260px;
   width: calc(100% - 260px);
   min-height: 100vh;
-  background: #f5f7fa;
+  background: #030d1b;
 }
 
 /* ============================================
@@ -217,7 +217,7 @@ body {
 }
 
 .stat-card {
-  background: white;
+  background: rgb(11, 19, 110);
   border-radius: 12px;
   padding: 25px;
   display: flex;
@@ -1042,7 +1042,7 @@ body {
    ============================================ */
 
 .skills-section {
-  background: white;
+  background: rgb(210, 85, 85);
   border-radius: 20px;
   padding: 60px 40px;
   margin-bottom: 80px;
