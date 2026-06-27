@@ -13,40 +13,256 @@ const timezones = {
 // ========== FUNCIÓN PARA ACTUALIZAR HORAS ==========
 function updateTime() {
      const now = new Date();
-     
-     // Hora local principal
+
+     // Fecha principal
      const options = {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
           weekday: 'long'
      };
-     
-     document.getElementById('time-principal').textContent = 
-          now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-     document.getElementById('date-principal').textContent = 
-          now.toLocaleDateString('es-ES', options);
-     
+
+     const timePrincipal = document.getElementById('time-principal');
+     const datePrincipal = document.getElementById('date-principal');
+
+     // Hora principal
+     if (timePrincipal) {
+          timePrincipal.textContent = now.toLocaleTimeString('es-ES', {
+               hour: 'numeric',
+               minute: '2-digit',
+               second: '2-digit',
+               hour12: true
+          });
+     }
+
+     // Fecha principal
+     if (datePrincipal) {
+          datePrincipal.textContent = now.toLocaleDateString('es-ES', options);
+     }
+
      // Actualizar zonas horarias
      for (const [key, value] of Object.entries(timezones)) {
           const timeString = getTimeInTimezone(now, value.offset);
           const element = document.getElementById(value.id);
+
           if (element) {
                element.textContent = timeString;
           }
      }
 }
 
-// Función para obtener hora en zona horaria específica
+// Función para obtener hora en una zona horaria específica
 function getTimeInTimezone(date, offset) {
      const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
      const newDate = new Date(utc + (3600000 * offset));
-     return newDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+     return newDate.toLocaleTimeString('es-ES', {
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true
+     });
 }
 
 // Actualizar tiempo cada segundo
 setInterval(updateTime, 1000);
-updateTime(); // Actualizar inmediatamente
+updateTime();
+// ========== CALCULADORA ==========
+const calculatorDisplay = document.getElementById('calculator-display');
+const calcButtons = document.querySelectorAll('.calc-btn');
+let calculatorExpression = '';
+
+function updateCalculatorDisplay() {
+     if (!calculatorDisplay) return;
+     calculatorDisplay.textContent = calculatorExpression || '0';
+}
+
+function evaluateExpression(expression) {
+     try {
+          const sanitized = expression.replace(/×/g, '*').replace(/÷/g, '/');
+          const validExpression = /^[\d.+\-*/() ]+$/.test(sanitized);
+          if (!validExpression) {
+               return 'Error';
+          }
+          const result = Function(`"use strict"; return (${sanitized})`)();
+          return Number.isFinite(result) ? result.toString() : 'Error';
+     } catch (error) {
+          return 'Error';
+     }
+}
+
+if (calculatorDisplay) {
+     calcButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+               const value = button.dataset.value;
+               const action = button.dataset.action;
+
+               if (action === 'clear') {
+                    calculatorExpression = '';
+                    updateCalculatorDisplay();
+                    return;
+               }
+
+               if (action === 'backspace') {
+                    calculatorExpression = calculatorExpression.slice(0, -1);
+                    updateCalculatorDisplay();
+                    return;
+               }
+
+               if (action === 'calculate') {
+                    calculatorExpression = evaluateExpression(calculatorExpression);
+                    updateCalculatorDisplay();
+                    return;
+               }
+
+               if (value !== undefined) {
+                    calculatorExpression += value;
+                    updateCalculatorDisplay();
+               }
+          });
+     });
+}
+
+// ========== CLIMA ==========
+const weatherDescriptions = {
+     0: 'Despejado',
+     1: 'Mayormente despejado',
+     2: 'Parcialmente nublado',
+     3: 'Nublado',
+     45: 'Niebla',
+     48: 'Escarcha',
+     51: 'Llovizna ligera',
+     53: 'Llovizna moderada',
+     55: 'Llovizna intensa',
+     61: 'Lluvia ligera',
+     63: 'Lluvia moderada',
+     65: 'Lluvia fuerte',
+     71: 'Nieve ligera',
+     73: 'Nieve moderada',
+     75: 'Nieve fuerte',
+     80: 'Chubascos',
+     95: 'Tormenta',
+     96: 'Tormenta con granizo',
+     99: 'Tormenta severa'
+};
+
+function getWeatherIcon(code) {
+     const icons = {
+          0: '☀️',
+          1: '🌤️',
+          2: '⛅',
+          3: '☁️',
+          45: '🌫️',
+          48: '🌫️',
+          51: '🌦️',
+          61: '🌧️',
+          71: '🌨️',
+          80: '🌦️',
+          95: '⛈️',
+          96: '⛈️',
+          99: '⛈️'
+     };
+     return icons[code] || '🌤️';
+}
+
+function renderWeatherResult(content) {
+     const weatherResult = document.getElementById('weather-result');
+     if (weatherResult) {
+          weatherResult.innerHTML = content;
+     }
+}
+
+async function loadWeatherByCity(city) {
+     const weatherResult = document.getElementById('weather-result');
+     if (!weatherResult) return;
+
+     renderWeatherResult('<p class="weather-loading">Buscando el clima...</p>');
+
+     try {
+          const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=es&format=json`);
+          const geoData = await geoResponse.json();
+
+          if (!geoData.results?.length) {
+               renderWeatherResult('<p class="weather-error">No encontramos esa ciudad.</p>');
+               return;
+          }
+
+          const location = geoData.results[0];
+          loadWeatherByCoords(location.latitude, location.longitude, location.name, location.country);
+     } catch (error) {
+          renderWeatherResult('<p class="weather-error">No se pudo obtener el clima en este momento.</p>');
+     }
+}
+
+async function loadWeatherByCoords(latitude, longitude, locationName = 'Tu ubicación', countryName = '') {
+     const weatherResult = document.getElementById('weather-result');
+     if (!weatherResult) return;
+
+     renderWeatherResult('<p class="weather-loading">Consultando el clima...</p>');
+
+     try {
+          const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto&language=es`);
+          const weatherData = await weatherResponse.json();
+          const current = weatherData.current;
+          const weatherCode = current.weather_code;
+          const temperature = Math.round(current.temperature_2m);
+          const feelsLike = Math.round(current.apparent_temperature);
+          const humidity = current.relative_humidity_2m;
+          const wind = Math.round(current.wind_speed_10m);
+
+          renderWeatherResult(`
+               <div class="weather-content">
+                    <div class="weather-main">
+                         <div>
+                              <p class="weather-location">${locationName}${countryName ? `, ${countryName}` : ''}</p>
+                              <p class="weather-temp">${temperature}°C</p>
+                              <p>${weatherDescriptions[weatherCode] || 'Clima variable'}</p>
+                         </div>
+                         <div class="weather-icon">${getWeatherIcon(weatherCode)}</div>
+                    </div>
+                    <div class="weather-meta">
+                         <div><strong>Sensación</strong>${feelsLike}°C</div>
+                         <div><strong>Humedad</strong>${humidity}%</div>
+                         <div><strong>Viento</strong>${wind} km/h</div>
+                    </div>
+               </div>
+          `);
+     } catch (error) {
+          renderWeatherResult('<p class="weather-error">No se pudo obtener el clima en este momento.</p>');
+     }
+}
+
+const cityInput = document.getElementById('city-input');
+const btnSearchWeather = document.getElementById('btn-search-weather');
+
+if (btnSearchWeather && cityInput) {
+     btnSearchWeather.addEventListener('click', () => {
+          const city = cityInput.value.trim();
+          if (city) {
+               loadWeatherByCity(city);
+          }
+     });
+
+     cityInput.addEventListener('keypress', (event) => {
+          if (event.key === 'Enter') {
+               const city = cityInput.value.trim();
+               if (city) {
+                    loadWeatherByCity(city);
+               }
+          }
+     });
+}
+
+if (navigator.geolocation && document.getElementById('weather-result')) {
+     navigator.geolocation.getCurrentPosition(
+          (position) => {
+               loadWeatherByCoords(position.coords.latitude, position.coords.longitude);
+          },
+          () => {
+               loadWeatherByCity('Bogotá');
+          }
+     );
+}
 
 // ========== SISTEMA DE NOTAS ==========
 const btnAddNote = document.getElementById('btn-add-note');
@@ -66,6 +282,8 @@ function saveNotes(notes) {
 
 // Mostrar todas las notas
 function displayNotes() {
+     if (!notesList) return;
+
      const notes = loadNotes();
      notesList.innerHTML = '';
      
@@ -119,10 +337,15 @@ function deleteNote(index) {
      displayNotes();
 }
 
-btnAddNote.addEventListener('click', addNote);
-noteInput.addEventListener('keypress', (e) => {
-     if (e.key === 'Enter') addNote();
-});
+if (btnAddNote) {
+     btnAddNote.addEventListener('click', addNote);
+}
+
+if (noteInput) {
+     noteInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') addNote();
+     });
+}
 
 displayNotes(); // Mostrar notas al cargar
 
@@ -143,6 +366,8 @@ function saveGalleryImages(images) {
 
 // Mostrar galería
 function displayGalleryImages() {
+     if (!galleryGrid) return;
+
      const images = loadGalleryImages();
      galleryGrid.innerHTML = '';
      
@@ -183,39 +408,46 @@ function deleteImage(index) {
      displayGalleryImages();
 }
 
-imageInput.addEventListener('change', handleImageUpload);
+if (imageInput) {
+     imageInput.addEventListener('change', handleImageUpload);
+}
 
 // Drag and drop para galería
 const galleryUpload = document.querySelector('.gallery-upload');
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
-     galleryUpload.addEventListener(event, preventDefaults, false);
-});
+if (galleryUpload) {
+     const preventDefaults = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+     };
 
-function preventDefaults(e) {
-     e.preventDefault();
-     e.stopPropagation();
+     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
+          galleryUpload.addEventListener(eventName, preventDefaults, false);
+     });
+
+     ['dragenter', 'dragover'].forEach((eventName) => {
+          galleryUpload.addEventListener(eventName, () => {
+               galleryUpload.style.background = 'rgba(0, 113, 227, 0.1)';
+          });
+     });
+
+     ['dragleave', 'drop'].forEach((eventName) => {
+          galleryUpload.addEventListener(eventName, () => {
+               galleryUpload.style.background = '';
+          });
+     });
+
+     galleryUpload.addEventListener('drop', (e) => {
+          const dt = e.dataTransfer;
+          const files = dt?.files;
+          if (imageInput && files && files.length) {
+               const dataTransfer = new DataTransfer();
+               Array.from(files).forEach((file) => dataTransfer.items.add(file));
+               imageInput.files = dataTransfer.files;
+               const event = new Event('change', { bubbles: true });
+               imageInput.dispatchEvent(event);
+          }
+     });
 }
-
-['dragenter', 'dragover'].forEach(event => {
-     galleryUpload.addEventListener(event, () => {
-          galleryUpload.style.background = 'rgba(0, 113, 227, 0.1)';
-     });
-});
-
-['dragleave', 'drop'].forEach(event => {
-     galleryUpload.addEventListener(event, () => {
-          galleryUpload.style.background = '';
-     });
-});
-
-galleryUpload.addEventListener('drop', (e) => {
-     const dt = e.dataTransfer;
-     const files = dt.files;
-     imageInput.files = files;
-     
-     const event = new Event('change', { bubbles: true });
-     imageInput.dispatchEvent(event);
-});
 
 displayGalleryImages(); // Mostrar imágenes al cargar
 
@@ -237,6 +469,8 @@ const monthNames = [
 const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 
 function generateCalendar() {
+     if (!calendarMonth || !calendarGrid) return;
+
      const year = currentDate.getFullYear();
      const month = currentDate.getMonth();
      
@@ -301,15 +535,17 @@ function createCalendarDay(day, isOtherMonth) {
      return div;
 }
 
-btnPrevMonth.addEventListener('click', () => {
-     currentDate.setMonth(currentDate.getMonth() - 1);
-     generateCalendar();
-});
+if (btnPrevMonth && btnNextMonth) {
+     btnPrevMonth.addEventListener('click', () => {
+          currentDate.setMonth(currentDate.getMonth() - 1);
+          generateCalendar();
+     });
 
-btnNextMonth.addEventListener('click', () => {
-     currentDate.setMonth(currentDate.getMonth() + 1);
-     generateCalendar();
-});
+     btnNextMonth.addEventListener('click', () => {
+          currentDate.setMonth(currentDate.getMonth() + 1);
+          generateCalendar();
+     });
+}
 
 generateCalendar(); // Generar calendario inicial
 

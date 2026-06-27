@@ -4,6 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>TimeRelative - Horas del Mundo</title>
+     <link rel="icon" href="favicon.ico" type="image/x-icon">
      <link rel="stylesheet" type="text/css" href="style-new.css">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +14,19 @@
 
 <header class="header">
      <div class="logo__header">
-          <span class="logo-icon">🌍</span> TimeRelative
+          <span class="logo-icon"><img src="logo.png" alt="Logo TimeRelative"></span>
      </div>
      <nav class="nav">
           <ul class="nav__ul">
                <li class="nav__li"><a href="index.html" class="texto">⏰ Horas</a></li>
-               <li class="nav__li"><a href="Caliendario.html" class="texto">📅 Calendario</a></li>
-               <li class="nav__li"><a href="clima.html" class="texto">🌤️ Clima</a></li>
+               <li class="nav__li"><a href="#calculator-section" class="texto">🧮 Calculadora</a></li>
+               <li class="nav__li"><a href="#clima-section" class="texto">🌤️ Clima</a></li>
+          </ul>
+          <br>
+           <ul class="nav__ul">
+               <li class="nav__li"><a href="#notes-section" class="texto"> 📜 Notas</a></li>
+               <li class="nav__li"><a href="#gallery-section" class="texto"> 📷 Imagenes</a></li>
+               <li class="nav__li"><a href="#calendar-section" class="texto">📅 Calendario</a></li>
           </ul>
      </nav>
 </header>
@@ -28,10 +35,11 @@
      <!-- SECCIÓN PRINCIPAL DE HORAS -->
      <section class="section-hero">
           <div class="card-principal glass-effect">
+               <div class="hero-badge">Tiempo global • claro y simple</div>
                <div class="time-display">
                     <h1 id="time-principal" class="time-text">00:00:00</h1>
                     <p id="date-principal" class="date-text">Cargando...</p>
-                    <p class="location-text">Tu Zona Horaria</p>
+                    <p class="location-text">Tu zona horaria • sincronizada en tiempo real</p>
                </div>
           </div>
      </section>
@@ -97,9 +105,57 @@
                </div>
           </div>
      </section>
+ <br>
+ <br>
+     <!-- SECCIÓN DE CALCULADORA -->
+     <section class="section-calculator" >
+          <h2 class="section-title"id="calculator-section">🧮 Calculadora</h2>
+          <div class="calculator-card glass-effect">
+               <div class="calculator-display" id="calculator-display">0</div>
+               <div class="calculator-grid">
+                    <button class="calc-btn calc-btn--operator" data-action="clear">C</button>
+                    <button class="calc-btn calc-btn--operator" data-action="backspace">⌫</button>
+                    <button class="calc-btn calc-btn--operator" data-value="/">÷</button>
+                    <button class="calc-btn calc-btn--operator" data-value="*">×</button>
 
+                    <button class="calc-btn" data-value="7">7</button>
+                    <button class="calc-btn" data-value="8">8</button>
+                    <button class="calc-btn" data-value="9">9</button>
+                    <button class="calc-btn calc-btn--operator" data-value="-">−</button>
+
+                    <button class="calc-btn" data-value="4">4</button>
+                    <button class="calc-btn" data-value="5">5</button>
+                    <button class="calc-btn" data-value="6">6</button>
+                    <button class="calc-btn calc-btn--operator" data-value="+">+</button>
+
+                    <button class="calc-btn" data-value="1">1</button>
+                    <button class="calc-btn" data-value="2">2</button>
+                    <button class="calc-btn" data-value="3">3</button>
+                    <button class="calc-btn calc-btn--equal" data-action="calculate">=</button>
+
+                    <button class="calc-btn" data-value="0">0</button>
+                    <button class="calc-btn" data-value=".">.</button>
+                    <button class="calc-btn" data-action="clear">AC</button>
+               </div>
+          </div>
+     </section>
+<br><br>
+     <!-- SECCIÓN DE CLIMA -->
+     <section class="section-weather" id="clima-section">
+          <h2 class="section-title">🌦️ Clima</h2>
+          <div class="weather-card glass-effect">
+               <div class="weather-search">
+                    <input type="text" id="city-input" class="note-text-input" placeholder="Escribe una ciudad...">
+                    <button id="btn-search-weather" class="btn-add-note">Buscar</button>
+               </div>
+               <div id="weather-result" class="weather-result">
+                    <p class="weather-placeholder">Ingresa una ciudad para ver el clima actual.</p>
+               </div>
+          </div>
+     </section>
+<br><br>
      <!-- SECCIÓN DE NOTAS -->
-     <section class="section-notes">
+     <section class="section-notes" id="notes-section">
           <h2 class="section-title">📝 Mis Notas</h2>
           <div class="notes-container">
                <div class="notes-input glass-effect">
@@ -111,9 +167,9 @@
                </ul>
           </div>
      </section>
-
+<br><br>
      <!-- SECCIÓN DE GALERÍA DE IMÁGENES -->
-     <section class="section-gallery">
+     <section class="section-gallery" id="gallery-section">
           <h2 class="section-title">🖼️ Galería de Guías</h2>
           <div class="gallery-container">
                <div class="gallery-upload glass-effect">
@@ -128,9 +184,9 @@
                </div>
           </div>
      </section>
-
+<br><br>
      <!-- SECCIÓN DE CALENDARIO MINI -->
-     <section class="section-calendar">
+     <section class="section-calendar" id="calendar-section">
           <h2 class="section-title">📅 Calendario Rápido</h2>
           <div class="calendar-container glass-effect">
                <div class="calendar-header">
@@ -155,8 +211,8 @@
           <div class="footer-section">
                <h4>Enlaces</h4>
                <a href="index.html">Inicio</a>
-               <a href="Caliendario.html">Calendario</a>
-               <a href="clima.html">Clima</a>
+               <a href="#calculator-section">🧮 Calculadora</a>
+               <a href="#clima-section">🌤️ Clima</a>
           </div>
           <div class="footer-section">
                <h4>Contacto</h4>

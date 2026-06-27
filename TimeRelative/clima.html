@@ -1,12 +1,59 @@
-<html> 
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimeRelativeclima</title>
-    <link rel="stylesheet" href="diseño.css">
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>TimeRelative - Clima</title>
+     <link rel="stylesheet" type="text/css" href="style-new.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="inicio">
 
-    <script src="codigo.js"></script>
+<header class="header">
+     <div class="logo__header">
+          <span class="logo-icon">🌍</span> TimeRelative
+     </div>
+     <nav class="nav">
+          <ul class="nav__ul">
+               <li class="nav__li"><a href="index.html" class="texto">⏰ Horas</a></li>
+               <li class="nav__li"><a href="Caliendario.html" class="texto">📅 Calendario</a></li>
+               <li class="nav__li"><a href="clima.html" class="texto">🌤️ Clima</a></li>
+          </ul>
+     </nav>
+</header>
+
+<main class="main-content">
+     <section class="section-weather">
+          <h2 class="section-title">🌦️ Clima en tiempo real</h2>
+          <div class="weather-card glass-effect">
+               <div class="weather-search">
+                    <input type="text" id="city-input" class="note-text-input" placeholder="Escribe una ciudad...">
+                    <button id="btn-search-weather" class="btn-add-note">Buscar</button>
+               </div>
+               <div id="weather-result" class="weather-result">
+                    <p class="weather-placeholder">Se consultará tu ubicación o podrás buscar una ciudad.</p>
+               </div>
+          </div>
+     </section>
+</main>
+
+<footer class="footer">
+     <div class="footer-content">
+          <div class="footer-section">
+               <h3>TimeRelative</h3>
+               <p>Tu compañero de horas globales</p>
+          </div>
+          <div class="footer-section">
+               <h4>Enlaces</h4>
+               <a href="index.html">Inicio</a>
+               <a href="Caliendario.html">Calendario</a>
+               <a href="clima.html">Clima</a>
+          </div>
+     </div>
+</footer>
+
+<script src="codigo-new.js"></script>
 </body>
 </html>
